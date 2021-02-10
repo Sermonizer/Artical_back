@@ -4,3 +4,6 @@
     在文件夹中找到index.js并执行
    nodemon + 文件
     直接执行文件
+
+## 解决mongodb无法启动的错误
+输入以下代码：mongod.exe --nojournal --dbpath .

@@ -23,7 +23,9 @@ export default {
   },
   methods: {
     onSaveArticle() {
-      console.log(this.article)
+      this.$http.post('articles', this.article).then(res => {
+        console.log(res.data)
+      })
     }
   }
 }

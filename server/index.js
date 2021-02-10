@@ -9,12 +9,14 @@ app.use(express.json())
 
 // 定义数据库模型
 const mongoose = require('mongoose')
+
 // 27017: mongodb默认端口号， element-admin：自定义的数据库名
 mongoose.connect('mongodb://localhost:27017/element-admin', {
   // 默认参数
   useNewUrlParser: true,
   useFindAndModify: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useUnifiedTopology: true
 })
 
 // 定义文章数据模型
@@ -35,6 +37,7 @@ app.get('/', async (req, res) => {
 app.post('/api/articles', async (req, res) => {
   // 使用Article的create方法创建新的数据对象，req.body里面就是文章的title和content
   const article = await Article.create(req.body)
+  // 将数据返回给前端
   res.send(article)
 })
 

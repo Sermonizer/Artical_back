@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
 import {
   Button,
   Submenu,
@@ -22,6 +23,12 @@ import {
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
+
+// 全局定义axios，并创建axios实例
+Vue.prototype.$http = axios.create({
+  // 设定后端地址作为接口根地址
+  baseURL: 'http://localhost:3001/api'
+})
 
 Vue.use(Button)
 Vue.use(Submenu)
