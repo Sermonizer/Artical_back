@@ -8,14 +8,17 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/articleList'
+    name: 'home',
+    redirect: '/articles/index'
   },
   {
-    path: '/articleList',
+    path: '/articles/index',
+    name: 'articles-list',
     component: ArticleList
   },
   {
-    path: '/createArticle',
+    path: '/articles/create',
+    name: 'create-article',
     component: CreateArticle
   }
 ]
