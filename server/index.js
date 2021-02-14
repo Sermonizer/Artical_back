@@ -33,11 +33,39 @@ app.get('/', async (req, res) => {
   res.send('index')
 })
 
-// 新增文章的接口
+// 新增文章接口
 app.post('/api/articles', async (req, res) => {
   // 使用Article的create方法创建新的数据对象，req.body里面就是文章的title和content
   const article = await Article.create(req.body)
   // 将数据返回给前端
+  res.send(article)
+})
+
+// 获取文章列表接口
+app.get('/api/articles', async (req, res) => {
+  // Article.find()函数来查找Article数据
+  const articles = await Article.find()
+  res.send(articles)
+})
+
+// 删除文章接口
+app.delete('/api/articles/:id', async (req, res) => {
+  await Article.findByIdAndDelete(req.params.id)
+  res.send({
+    status: true
+  })
+})
+
+// 文章详情接口
+app.get('/api/articles/:id', async (req, res) => {
+  const article = await Article.findById(req.params.id)
+  res.send(article)
+})
+
+// 修改文章接口
+app.put('/api/articles/:id', async (req, res) => {
+  // 通过id获取对象并使用req.body替换
+  const article = await Article.findByIdAndUpdate(req.params.id, req.body)
   res.send(article)
 })
 

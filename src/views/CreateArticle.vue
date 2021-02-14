@@ -17,14 +17,17 @@
 export default {
   data() {
     return {
-      article: {
-      }
+      article: {}
     }
   },
   methods: {
     onSaveArticle() {
       this.$http.post('articles', this.article).then(res => {
-        console.log(res.data)
+        if (res.data) {
+          this.$message.success('文章新建成功')
+          // 文章创建成功，跳转回首页
+          this.$router.push('/articles/index')
+        }
       })
     }
   }

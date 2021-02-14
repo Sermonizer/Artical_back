@@ -18,7 +18,8 @@ import {
   TableColumn,
   Form,
   FormItem,
-  Input
+  Input,
+  Message
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -29,6 +30,8 @@ Vue.prototype.$http = axios.create({
   // 设定后端地址作为接口根地址
   baseURL: 'http://localhost:3001/api'
 })
+
+Vue.prototype.$message = Message
 
 Vue.use(Button)
 Vue.use(Submenu)
